@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="CardBG">
+        <item name="android:shape">rectangle</item>
+        <item name="android:elevation" tools:ignore="NewApi">4dp</item>
+        <item name="android:color">@color/purple_500</item>
+    </style>
+</resources>

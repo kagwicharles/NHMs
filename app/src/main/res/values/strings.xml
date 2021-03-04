@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NHMs</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="records">Records</string>
+    <string name="revenue">Revenue</string>
+    <string name="facility">Facility</string>
+    <string name="stock">Stock</string>
+    <string name="staffing">Staffing</string>
+    <string name="inpatient">Inpatient</string>
+    <string name="analytics">Analytics</string>
+</resources>

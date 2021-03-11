@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        app:cnb_iconColor="?attr/colorPrimary"
+        app:cnb_textColor="?attr/colorPrimary"/>
 
     <item
         android:id="@+id/navigation_facility"
         android:icon="@drawable/ic_baseline_analytics_24"
-        android:title="@string/analytics" />
+        android:title="@string/analytics"
+        app:cnb_iconColor="?attr/colorPrimary"
+        app:cnb_textColor="?attr/colorPrimary"/>
 
     <item
         android:id="@+id/navigation_staff"
         android:icon="@drawable/ic_doctors"
-        android:title="@string/staffing" />
+        android:title="@string/staffing"
+        app:cnb_iconColor="?attr/colorPrimary"
+        app:cnb_textColor="?attr/colorPrimary"/>
 
 
     <item
         android:id="@+id/navigation_revenue"
         android:icon="@drawable/ic_baseline_airline_seat_individual_suite_24"
-        android:title="@string/inpatient" />
+        android:title="@string/inpatient"
+        app:cnb_iconColor="?attr/colorPrimary"
+        app:cnb_textColor="?attr/colorPrimary"/>
 
 </menu>

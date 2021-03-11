@@ -47,7 +47,7 @@ public class StaffFragment extends Fragment {
         othersRV.setAdapter(new OtherRecyclerAdapter(setOtherResources()));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         othersRV.setLayoutManager(linearLayoutManager);
-        //othersRV.addItemDecoration(new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation()));
+        othersRV.addItemDecoration(new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation()));
 
         StartSnapHelper startSnapHelper = new StartSnapHelper();
         startSnapHelper.attachToRecyclerView(othersRV);

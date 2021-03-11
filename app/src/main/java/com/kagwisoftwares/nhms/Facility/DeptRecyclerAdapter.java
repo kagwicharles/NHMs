@@ -1,5 +1,6 @@
 package com.kagwisoftwares.nhms.Facility;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +12,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kagwisoftwares.nhms.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import app.futured.donut.DonutProgressView;
+import app.futured.donut.DonutSection;
 
 public class DeptRecyclerAdapter extends RecyclerView.Adapter<DeptRecyclerAdapter.ViewHolder> {
 
     private ArrayList<Department> data;
+    private ArrayList<Integer> colors;
 
-    public DeptRecyclerAdapter(ArrayList<Department> data) {
+    public DeptRecyclerAdapter(ArrayList<Department> data, ArrayList<Integer> colors) {
         this.data = data;
+        this.colors = colors;
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView name, visits;
+        private DonutProgressView donut;
 
         public ViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.deptName);
             visits = (TextView) view.findViewById(R.id.deptVisits);
+            donut = (DonutProgressView) view.findViewById(R.id.deptIcon);
         }
 
         public TextView getName() {
@@ -38,6 +46,8 @@ public class DeptRecyclerAdapter extends RecyclerView.Adapter<DeptRecyclerAdapte
         public TextView getVisits() {
             return visits;
         }
+
+        public DonutProgressView getDonut() { return donut;}
     }
 
     @NonNull
@@ -50,8 +60,12 @@ public class DeptRecyclerAdapter extends RecyclerView.Adapter<DeptRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Department department = data.get(position);
+        List<DonutSection> sections = new ArrayList<>();
+        sections.add(new DonutSection("Section", colors.get(position), 1f));
+        sections.add(new DonutSection("Section2", Color.LTGRAY, 1f));
         holder.getName().setText(String.valueOf(department.getDeptName()));
         holder.getVisits().setText(String.valueOf(department.getDeptVisits()));
+        holder.getDonut().submitData(sections);
     }
 
     @Override

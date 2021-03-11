@@ -2,9 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@android:style/Widget.Material.ScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8F5E9">
+    android:background="#fafafa"
+    android:fillViewport="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            android:elevation="2dp"
+            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +29,9 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@drawable/bottom_corners"
-            android:elevation="2dp"
+            android:background="#ffffff"
             android:orientation="vertical"
-            android:padding="4dp"
+            android:padding="5dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +56,12 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="5dp"
                 android:elevation="4dp"
+                android:gravity="center"
                 android:hint="Frequency"
                 android:minWidth="100dp"
+                android:padding="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:spinner_arrow_animate="true"
                 app:spinner_arrow_gravity="end"
                 app:spinner_arrow_show="true"
@@ -70,15 +73,13 @@
                 android:id="@+id/visitsLinechart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp" />
+                android:layout_marginTop="5dp" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,44 +90,37 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Most frequent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/button4"
+                app:layout_constraintBottom_toTopOf="@+id/deptRV"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button4" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="See all"
-                android:textAllCaps="false"
-                app:elevation="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/deptRV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:clipToPadding="false"
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button4" />
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,6 +134,7 @@
                         android:id="@+id/textView17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
                         android:text="Submitted requests"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView23"
@@ -166,6 +161,7 @@
                         android:id="@+id/textView23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
                         android:text="Confirmed"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView25"
@@ -192,6 +188,7 @@
                         android:id="@+id/textView25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
                         android:text="Pending"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -245,6 +242,22 @@
                         app:layout_constraintTop_toTopOf="@+id/textView25" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/four_cornersbg"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="See all"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

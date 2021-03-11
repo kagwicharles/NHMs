@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.kagwisoftwares.nhms"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -44,4 +44,7 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.github.skydoves:powerspinner:1.1.7'
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.3.70'
+    implementation "app.futured.donut:library:2.1.0"
 }

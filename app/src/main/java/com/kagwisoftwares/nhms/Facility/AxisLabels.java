@@ -12,8 +12,12 @@ public class AxisLabels {
     }
 
     public ArrayList<String> setXAxisLabels() {
-        if (xAxisType.equals("Weekly"))
+        if (xAxisType.equals("Monthly"))
                 return setMonthlyLabels();
+        if (xAxisType.equals("Weekly"))
+            return setWeeklyLabels();
+        if (xAxisType.equals("Yearly"))
+            return setYearlyLabels();
         return null;
     }
 
@@ -21,8 +25,16 @@ public class AxisLabels {
 
     }
 
-    private void setWeeklyLabels() {
-
+    private ArrayList<String> setWeeklyLabels() {
+        ArrayList<String> xlabels = new ArrayList<>();
+        xlabels.add("Mon");
+        xlabels.add("Tue");
+        xlabels.add("Wed");
+        xlabels.add("Thur");
+        xlabels.add("Fri");
+        xlabels.add("Sat");
+        xlabels.add("Sun");
+        return xlabels;
     }
 
     private ArrayList<String> setMonthlyLabels() {
@@ -42,8 +54,14 @@ public class AxisLabels {
         return xlabels;
     }
 
-    private void setYearlyLabels() {
-
+    private ArrayList<String> setYearlyLabels() {
+        ArrayList<String> xlabels = new ArrayList<>();
+        xlabels.add("2021");
+        xlabels.add("2022");
+        xlabels.add("2023");
+        xlabels.add("2024");
+        xlabels.add("2025");
+        return xlabels;
     }
 
 }

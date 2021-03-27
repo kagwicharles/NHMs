@@ -1,23 +1,17 @@
 package com.kagwisoftwares.nhms.ui.analytics;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -32,24 +26,19 @@ import com.kagwisoftwares.nhms.Facility.Department;
 import com.kagwisoftwares.nhms.Facility.DeptRecyclerAdapter;
 import com.kagwisoftwares.nhms.Facility.StartSnapHelper;
 import com.kagwisoftwares.nhms.R;
-import com.skydoves.powerspinner.PowerSpinnerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AnalyticsFragment extends Fragment {
 
     private View view;
     private LineChart lineChart;
-    private PowerSpinnerView spinner;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_analytics, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbarAnalytics);
         toolbar.setTitle("Analysis");
 
-        spinner = view.findViewById(R.id.rangeSpinner);
-        spinnerSetup();
         lineChart = view.findViewById(R.id.visitsLinechart);
         fillLineChart();
 
@@ -84,15 +73,6 @@ public class AnalyticsFragment extends Fragment {
         return departments;
     }
 
-    private void spinnerSetup() {
-        List<String> adapter = new ArrayList<>();
-        adapter.add("Daily");
-        adapter.add("Weekly");
-        adapter.add("Monthly");
-        adapter.add("Yearly");
-        spinner.setItems(adapter);
-    }
-
     private ArrayList<Entry> getLineData() {
         ArrayList<Entry> linedataentries = new ArrayList<>();
         linedataentries.add(new Entry(0f, 10f));
@@ -117,7 +97,7 @@ public class AnalyticsFragment extends Fragment {
         xAxis.setGranularity(1f);
         xAxis.setGranularityEnabled(true);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
-            final ArrayList<String> xAxisLabels = new AxisLabels("Weekly","").setXAxisLabels();
+            final ArrayList<String> xAxisLabels = new AxisLabels("Monthly","").setXAxisLabels();
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 if(((int)value) < xAxisLabels.size())

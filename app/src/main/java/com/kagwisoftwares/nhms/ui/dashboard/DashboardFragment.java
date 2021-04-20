@@ -73,6 +73,8 @@ public class DashboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbarMain);
         toolbar.setTitle("Dashboard");
+        toolbar.inflateMenu(R.menu.toolbar_menu);
+
         context = getContext().getApplicationContext();
         set = new ArrayList<>();
         spinner = view.findViewById(R.id.rangeSpinner);
@@ -193,7 +195,7 @@ public class DashboardFragment extends Fragment {
     }
 
     public void getMonthlyDataSet(Context context, String frequency) {
-        final String url = "https://nhms-nyeri.osc-fr1.scalingo.io/revenue/totalRegistrationRevenue/1";
+        final String url = "http://kagwi.heliohost.us/NHMs/revenue/totalRegistrationRevenue/1";
         RequestQueue requestQueue = VolleySingleton.getInstance(context).getRequestQueue();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -217,7 +219,7 @@ public class DashboardFragment extends Fragment {
 
                             JSONObject totalRevenueObj = totalObj.getJSONObject(0);
                             Double amount = totalRevenueObj.getDouble("Totals");
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                             dashRv.setLayoutManager(linearLayoutManager);
                             dashRv.setAdapter(new DashboardListAdapter(setDashData(pettyCount(amount))));
 
@@ -230,7 +232,7 @@ public class DashboardFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                loading.setVisibility(View.GONE);
             }
         });
         requestQueue.add(jsonObjectRequest);
@@ -270,13 +272,14 @@ public class DashboardFragment extends Fragment {
     }
 
     public void getWeeklyDataSet(Context context, String frequency, String date1, String date2) {
-        final String url = "https://nhms-nyeri.osc-fr1.scalingo.io/revenue/weeklyRegistrationRevenue/1/"+date1+"/"+date2;
+        final String url = "http://kagwi.heliohost.us/NHMs/revenue/weeklyRegistrationRevenue/1/"+date1+"/"+date2;
         RequestQueue requestQueue = VolleySingleton.getInstance(context).getRequestQueue();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         String res = response.toString();
+                        Log.d("RESPONSE ", res);
 
                         try {
                             JSONObject object = new JSONObject(res);
@@ -307,7 +310,8 @@ public class DashboardFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d("Error ", error.toString());
+                loading.setVisibility(View.GONE);
             }
         });
         requestQueue.add(jsonObjectRequest);

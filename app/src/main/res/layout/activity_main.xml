@@ -21,9 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:animateLayoutChanges="false"
-        android:background="#fafafa"
+        android:background="#ffffff"
+        android:elevation="20dp"
         android:fadingEdge="horizontal"
-        android:elevation="10dp"
         app:cnb_iconSize="30dp"
         app:cnb_menuResource="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent" />
